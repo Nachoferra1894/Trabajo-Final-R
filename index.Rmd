@@ -1,0 +1,82 @@
+---
+title: "index"
+output: html_document
+---
+
+```{r setup, include=FALSE,message=FALSE}
+library(readr)
+datasetCsv <- read_delim("~/Desktop/Facu/AnalisisyEd/R/datasetCsv.csv", 
+";", escape_double = FALSE, trim_ws = TRUE)
+Data <- datasetCsv
+summary(Data)
+  
+#Queries a usar:
+#Homrbes y mujeres
+hombres <- subset(Data,Data$SEXO=="MASC")
+cantHom <- round(length(hombres$SEXO)/length(Data$SEXO)*100)
+mujeres <- subset(Data,Data$SEXO=="FEME")
+cantMuj <- round(length(mujeres$SEXO)/length(Data$SEXO)*100)
+#1 hombres y mujeres mayores a la edad media
+#Promedio de edad
+edadMeda <- mean(Data$EDAD)
+hombresMmean <- subset(hombres,hombres$EDAD>edadMeda)
+mujeresMmean <- subset(mujeres,mujeres$EDAD>edadMeda)
+
+#2
+print("Pacientes que ya habian sido operados por angioplastia y los volvieron a operar por lo mismo")
+IntPreviaAngio <- subset(Data,Data$`INTERVENCION PREVIA`=="ANGIOPLASTIA")
+dobleAngio <- subset(IntPreviaAngio,IntPreviaAngio$PROCEDIMIENTO=="ANGIOPLASTIA")
+
+#3
+print("Motivo de ingreso de los pacientes que terminaron en angioplastia")
+operacionesAngio <- subset(Data,Data$PROCEDIMIENTO=="ANGIOPLASTIA")
+table(operacionesAngio$`MOTIVO DE INGRESO`)
+print("Vemos que el mas repetido es:")
+tail(names(sort(table(operacionesAngio$`MOTIVO DE INGRESO`))), 1)
+
+#4
+meidaBomba <- mean(Data$`TIEMPO DE BOMBA`,na.rm = TRUE)
+pacMasMediaBomba <- subset(Data,Data$`TIEMPO DE BOMBA`>meidaBomba)
+pacMenosMediaBomba <- subset(Data,Data$`TIEMPO DE BOMBA`<meidaBomba)
+
+#5 Porque hay columnas donde hay vasos angioplastados pero no vasos exitosos??
+Data$`NUMERO DE VASOS EXITOSOS`[is.na(Data$`NUMERO DE VASOS EXITOSOS`)]<-0
+print("Vasos angioplastados que no fueron exitosos??")
+vasosAngiopNoExit <- subset(Data,Data$`NUMERO VASOS ANGIOP`!=Data$`NUMERO DE VASOS EXITOSOS`)
+
+#6
+print("Pacientes que hubo problemas luego de la operacion")
+pacConProb <- subset(Data,Data$`EVOLUCION POSANGIOPLASTIA`!="SIN EVENTOS")
+
+#7
+print("Pacientes con complicaciones inmediatas o tardias")
+pacComplicac <- subset(Data,Data$`COMPLICACIONES INMEDIATAS`>= 1 | Data$`COMPLICACIONES TARDIAS`>= 1)
+
+#8
+print("Tabla vasos angioplastados")
+table(Data$`VASOS ANGIOPLASTIADOS`)
+
+#9
+print("Resumen coronopatia != numero de vasos")
+
+
+```
+
+## Trabajo pacientes de cardiologia
+
+
+
+```{r cars, echo=FALSE,message=FALSE,warning=FALSE, fig.show="hold", out.width="50%"}
+library(plotrix)
+library(dplyr)
+pie3D(c(cantHom,cantMuj),main = "Procentaje de mujeres y hombres", labels = c(paste(cantHom,"%"),paste(cantMuj,"%")),col = c("red","lawngreen"),labelcex = 1, explode = 0.1, theta = 1, mar = c(5,5,5,5))
+legend(-0.9,1.2,c("Hombres","Mujeres"),fill = c("red","lawngreen"))
+
+hist(Data$EDAD,col="cyan1",xlab = "Edad",ylab = "Frecuencia",main = "Edad de los pacientes del dataset") 
+
+```
+
+```{r pressure, echo=FALSE,message=FALSE}
+  
+```
+
