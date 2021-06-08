@@ -1,0 +1,8 @@
+name: "Cardiac Predictor"
+navbar:
+  title: "Cardiac"
+left:
+  - text: "Introduction"
+href: index.html
+- text: "Analysis"
+href: Report.html
