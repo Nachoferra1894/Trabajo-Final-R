@@ -1,7 +1,59 @@
-auto_roxygenize_for_build_and_reload="0"
-auto_roxygenize_for_build_package="1"
-auto_roxygenize_for_check="1"
-live_preview_website="1"
-makefile_args=""
-preview_website="1"
-website_output_format="all"
+*{
+/*background-color: rgb(40,40,40);*/
+}
+
+row{
+  background-color: rgb(255,255,255);
+  
+}
+
+body{
+  width: 80%;
+   
+
+}
+
+.plotly html-widget html-widget-static-bound js-plotly-plot{
+  box-sizing: border-box;
+}
+.graphEC{
+  position: relative;
+  height: 480px;
+  width: 440px;
+}
+.fluid-row{
+  background-color: rgb(100,100,100);
+}
+
+h2{
+  padding: 10px;
+  background-color: #7DAFEB;
+}
+.tocify{
+  box-sizing: border-box;
+  color: Black;
+}
+.fluid-row .title{
+  font-weight: bold;
+}
+.introduction{
+    position: relative;
+    font-family: 'Helvetica';
+    text-justify: inter-word;
+    text-align: justify;
+    font-size: 18px;
+   
+}
+.analysis{
+   position: relative;
+    font-family: 'Helvetica';
+    text-justify: inter-word;
+    text-align: justify;
+    font-size: 18px;
+}
+.ageChart{
+  size: 40%;
+}
+img{
+  padding: 10px;
+}
