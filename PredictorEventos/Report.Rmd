@@ -19,7 +19,7 @@ output:
 ```{r setup, include=FALSE}
 library(readr)
 library(readxl)
-datasetCsv <- read_excel("C:\\Users\\nacho\\OneDrive\\Escritorio\\Programacion\\Current\\R\\TP Cardio\\dataset.xlsx")
+datasetCsv <- read_excel("C:\\Users\\nacho\\OneDrive\\Escritorio\\TP R\\PredictorEventos\\dataset.xlsx")
 Data <- datasetCsv
 
 
@@ -313,7 +313,7 @@ Graphs showing the percentages of men and women from the sample and their averag
      70 years old have a higher risk during procedure \n</p>
 
 
-<img src="C:\Users\nacho\OneDrive\Escritorio\Rpngs\Ambas.png">
+<img src="C:\Users\nacho\OneDrive\Escritorio\TP R\PredictorEventos\sources\images\Ambas.png">
 
 ```{r pressure, echo=FALSE, include=FALSE}
 pie3D(c(cantHom,cantMuj),main = "Percentage of men and women", labels = c(paste(cantHom,"%"),paste(cantMuj,"%")),col = c("#F56552","#7DAFEB"),labelcex = 1, explode = 0.1, theta = 1, mar = c(5,5,5,5))
@@ -330,7 +330,7 @@ hist((mujeres$EDAD ), main="" , xlim=c(0,100), ylab="Amount of women", xlab="Age
 
 ## Analysis
 <p class = "analysis"> After curating the dataset, a deep analysis was made in the search for connections between the variables which led to more complete queries.<br>
-The candidates found to have a bigger impact were: `Tiempo de Bomba`, `Complicaciones Inmediatas`, `Complicaciones Tardias`, `vasos Angioplastiados`</p>
+The variables considered to be presented by graphs were: `Tiempo de Bomba`, `Complicaciones Inmediatas`, `Complicaciones Tardias`, `vasos Angioplastiados`</p>
 <p class = "analysis">In the following graph the reason for admission is explored. This graph informs us about the most common problems which led to patients being hospitalized. </p>
 
 ```{r treem, echo=FALSE}
@@ -343,10 +343,11 @@ p <- plot_ly(
 )
 p
 ```
+
 <p class = "analysis"> Patients between 55 and 72 years old are more prone to needing an external pump during procedure. It was decided that analyzing the amount of time a patient had the pump, tied to their age could give more insight to the problems related to this. The paper <a href="https://www.fucsalud.edu.co/sites/default/files/2017-01/COMPLICACIONES%20QUIRU%CC%81RGICAS.pdf">Complicaciones quirurgicas</a> gives a more in depth perspective of why older patients tend to need more time with an artificial source of pumping. Cardiac surgeries with extracorporeal circulation
 also increase the risk of complications as they are aggressive interventions with manipulation and lung collapse during surgery</p>
 
-```{r mediaBomba, echo=FALSE, fig.width= 4.3, fig.height= 4.3}
+```{r mediaBomba, echo=FALSE, fig.width= 4.3, fig.height= 4.3, warning = FALSE, message = FALSE}
 fig <- plot_ly(data = Data ,y = ~`TIEMPO DE BOMBA`, x = ~`EDAD`, type = "scatter",
         marker = list(size = 5,
                       color = 'rgba(255, 182, 193, .9)',
@@ -356,9 +357,10 @@ fig <- plot_ly(data = Data ,y = ~`TIEMPO DE BOMBA`, x = ~`EDAD`, type = "scatter
 fig
 
 ```
-<img  class="graphEC" src="C:\Users\nacho\OneDrive\Escritorio\TP R\PredictorEventos\sources\images\Extracorporeal.png" alt="Patients with and without external pumps">
 
-<p class "analysis">Este va al final? </p>
+![](C:\Users\nacho\OneDrive\Escritorio\TP R\PredictorEventos\sources\images\ExtraCorporeal.png);
+
+<p class = "analysis">In conclusion, it was found that what was stated in the paper mentioned above also applied to the Hospital Austral Dataset. Patients between the mid fifties and low seventies tend to use an external pump during surgery. This lowers the risk of failure in a risky procedure such as this. </p>
 ```{r angioplastia, echo=FALSE}
 plotTree <- ggplot(data, aes(x=as.factor(id), y=value)) +       # Note that id is a factor. If x is numeric, there is some space between the first bar
   
@@ -386,8 +388,10 @@ plotTree <- ggplot(data, aes(x=as.factor(id), y=value)) +       # Note that id i
 
 
 ```
-<p class="analysis">Complications by age</p>
-<img src="C:\Users\nacho\OneDrive\Escritorio\Rpngs\ComplicacionesPorEdad.png">
+### Complications by age
+<p class=""analysis>Age plays an important role at the time of complications during and after surgery. </p>
+
+<img src="C:\Users\nacho\OneDrive\Escritorio\TP R\PredictorEventos\sources\images\ComplicacionesPorEdad.png">
 
 ### Coronopathy and succesful vessels
 <p class = "analysis">A higher number of angioplasted vessels means lower success rate. 87% for 1 vessel, 80% for 2 vessels and 69% for 3.</p>
