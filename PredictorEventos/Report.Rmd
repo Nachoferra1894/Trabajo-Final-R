@@ -346,7 +346,7 @@ p
 <p class = "analysis"> Patients between 55 and 72 years old are more prone to needing an external pump during procedure. It was decided that analyzing the amount of time a patient had the pump, tied to their age could give more insight to the problems related to this. The paper <a href="https://www.fucsalud.edu.co/sites/default/files/2017-01/COMPLICACIONES%20QUIRU%CC%81RGICAS.pdf">Complicaciones quirurgicas</a> gives a more in depth perspective of why older patients tend to need more time with an artificial source of pumping. Cardiac surgeries with extracorporeal circulation
 also increase the risk of complications as they are aggressive interventions with manipulation and lung collapse during surgery</p>
 
-```{r mediaBomba, echo=FALSE, fig.width= 4.3, fig.height= 4.3}
+```{r mediaBomba, echo=FALSE, fig.width= 4.3, fig.height= 4.3, warning = FALSE, message = FALSE}
 fig <- plot_ly(data = Data ,y = ~`TIEMPO DE BOMBA`, x = ~`EDAD`, type = "scatter",
         marker = list(size = 5,
                       color = 'rgba(255, 182, 193, .9)',
