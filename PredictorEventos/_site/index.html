@@ -14,7 +14,6 @@
 
 <title>Report</title>
 
-<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -34,8 +33,9 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<script src="site_libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="site_libs/plotly-binding-4.9.4/plotly.js"></script>
 <script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="site_libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="site_libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
@@ -222,12 +222,12 @@ div.tocify {
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row">
-<div class="col-sm-12 col-md-4 col-lg-3">
+<div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
 </div>
 
-<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -255,7 +255,7 @@ First of all we decided to get some metrics in terms of the dataset. We wanted t
 <p class="introduction">
 According to research from DR. Enresto Delgado Cidranes in <a href="https://dolor-drdelgadocidranes.com/peligros-de-la-angioplastia/">Peligros de la Angioplastia</a> patients who are over 70 years old have a higher risk during procedure 
 </p>
-<p><img src="sources/images/Ambas.png"></p>
+<p><img src=".\sources\images\Ambas.png"></p>
 </div>
 <div id="analysis" class="section level2">
 <h2>Analysis</h2>
@@ -265,14 +265,14 @@ After curating the dataset, a deep analysis was made in the search for connectio
 <p class="analysis">
 In the following graph the reason for admission is explored. This graph informs us about the most common problems which led to patients being hospitalized.
 </p>
-<div id="htmlwidget-e59439e8234da8143f03" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e59439e8234da8143f03">{"x":{"visdat":{"596443d71e06":["function () ","plotlyVisDat"]},"cur_data":"596443d71e06","attrs":{"596443d71e06":{"labels":["ANEURISMA AO","OTRA","PROG VALV","SCA SST","SINCOPE","INSUFICIENCIA CARDIACA","SCA no SST","PROG CORONARIO"],"values":"admisions","parents":null,"name":"Reason for admission","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"treemap"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"labels":["ANEURISMA AO","OTRA","PROG VALV","SCA SST","SINCOPE","INSUFICIENCIA CARDIACA","SCA no SST","PROG CORONARIO"],"values":["admisions","admisions","admisions","admisions","admisions","admisions","admisions","admisions"],"parents":[null,null,null,null,null,null,null,null],"name":"Reason for admission","type":"treemap","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(255,255,255,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-157b2ccd903205cb4f93" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-157b2ccd903205cb4f93">{"x":{"visdat":{"19672c859428":["function () ","plotlyVisDat"]},"cur_data":"19672c859428","attrs":{"19672c859428":{"labels":["ANEURISMA AO","OTRA","PROG VALV","SCA SST","SINCOPE","INSUFICIENCIA CARDIACA","SCA no SST","PROG CORONARIO"],"values":[1,1,1,1,2,5,12,194],"parents":null,"name":"Reason for admission","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"treemap"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"labels":["ANEURISMA AO","OTRA","PROG VALV","SCA SST","SINCOPE","INSUFICIENCIA CARDIACA","SCA no SST","PROG CORONARIO"],"values":[1,1,1,1,2,5,12,194],"parents":[null,null,null,null,null,null,null,null],"name":"Reason for admission","type":"treemap","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(255,255,255,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <p class="analysis">
 Patients between 55 and 72 years old are more prone to needing an external pump during procedure. It was decided that analyzing the amount of time a patient had the pump, tied to their age could give more insight to the problems related to this. The paper <a href="https://www.fucsalud.edu.co/sites/default/files/2017-01/COMPLICACIONES%20QUIRU%CC%81RGICAS.pdf">Complicaciones quirurgicas</a> gives a more in depth perspective of why older patients tend to need more time with an artificial source of pumping. Cardiac surgeries with extracorporeal circulation also increase the risk of complications as they are aggressive interventions with manipulation and lung collapse during surgery
 </p>
-<div id="htmlwidget-853d0f7cf4c3fd42ad4c" style="width:412.8px;height:412.8px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-853d0f7cf4c3fd42ad4c">{"x":{"visdat":{"59647988214e":["function () ","plotlyVisDat"]},"cur_data":"59647988214e","attrs":{"59647988214e":{"y":{},"x":{},"marker":{"size":5,"color":"rgba(255, 182, 193, .9)","line":{"color":"rgba(255, 5, 255, .8)","width":2}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"EDAD"},"yaxis":{"domain":[0,1],"automargin":true,"title":"`TIEMPO DE BOMBA`"},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"y":[125,85,124,73,65,104,57,90,85,61,210,34,129,95,62,61,219,189,149,69,141,64,76,101,69,39,69,110,60,120,65,69,108,99,90,65,119,87,75,99,105,50,157,93,83,94,80,67,105,172,80,80,69,70,30,100,72,56,68,133,92,80,185,130,83,109,80,75,155,57,157,60,90,110,60,65,90,85,93,99,43,60,440,89,60,0,145,125,212,55,99,84,59,79,94,79,210,64,84,67,75,60,75,65,84,89,77,85,117,101,98,61,62,147,93],"x":[75,30,61,61,68,58,86,63,69,32,69,24,65,47,83,71,67,59,72,37,43,55,46,50,26,45,47,41,47,54,58,57,56,75,60,27,80,26,81,66,74,55,18,67,62,68,61,66,25,66,62,68,66,37,16,51,75,52,52,67,84,53,72,46,66,56,71,74,42,65,73,71,59,58,75,63,68,20,61,74,58,52,63,38,45,65,58,35,55,44,61,42,42,61,61,61,60,29,61,77,31,69,66,62,69,41,76,47,68,72,57,77,61,72,66],"marker":{"color":"rgba(255, 182, 193, .9)","size":5,"line":{"color":"rgba(255, 5, 255, .8)","width":2}},"type":"scatter","mode":"markers","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-<p><img src="sources/images/ExtraCorporeal.png" />;</p>
+<div id="htmlwidget-a5870ab7ba8aa7ddb19e" style="width:412.8px;height:412.8px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a5870ab7ba8aa7ddb19e">{"x":{"visdat":{"1967c9cc001":["function () ","plotlyVisDat"]},"cur_data":"1967c9cc001","attrs":{"1967c9cc001":{"y":{},"x":{},"marker":{"size":5,"color":"rgba(250, 0, 0, .2)","line":{"color":"rgba(250, 0, 0, .9)","width":2}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Pump time relate to the ages","xaxis":{"domain":[0,1],"automargin":true,"title":"Age","titlefont":{"family":"Courier New, monospace","size":18,"color":"balck"}},"yaxis":{"domain":[0,1],"automargin":true,"title":"Pump time","titlefont":{"family":"Courier New, monospace","size":18,"color":"balck"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"y":[125,85,124,73,65,104,57,90,85,61,210,34,129,95,62,61,219,189,149,69,141,64,76,101,69,39,69,110,60,120,65,69,108,99,90,65,119,87,75,99,105,50,157,93,83,94,80,67,105,172,80,80,69,70,30,100,72,56,68,133,92,80,185,130,83,109,80,75,155,57,157,60,90,110,60,65,90,85,93,99,43,60,440,89,60,0,145,125,212,55,99,84,59,79,94,79,210,64,84,67,75,60,75,65,84,89,77,85,117,101,98,61,62,147,93],"x":[75,30,61,61,68,58,86,63,69,32,69,24,65,47,83,71,67,59,72,37,43,55,46,50,26,45,47,41,47,54,58,57,56,75,60,27,80,26,81,66,74,55,18,67,62,68,61,66,25,66,62,68,66,37,16,51,75,52,52,67,84,53,72,46,66,56,71,74,42,65,73,71,59,58,75,63,68,20,61,74,58,52,63,38,45,65,58,35,55,44,61,42,42,61,61,61,60,29,61,77,31,69,66,62,69,41,76,47,68,72,57,77,61,72,66],"marker":{"color":"rgba(250, 0, 0, .2)","size":5,"line":{"color":"rgba(250, 0, 0, .9)","width":2}},"type":"scatter","mode":"markers","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p><img src="./sources\images\ExtraCorporeal.png" />;</p>
 <p class="analysis">
 In conclusion, it was found that what was stated in the paper mentioned above also applied to the Hospital Austral Dataset. Patients between the mid fifties and low seventies tend to use an external pump during surgery. This lowers the risk of failure in a risky procedure such as this.
 </p>
@@ -281,15 +281,15 @@ In conclusion, it was found that what was stated in the paper mentioned above al
 <p class analysis>
 Age plays an important role at the time of facing complications during and after surgery.
 </p>
-<p><img src="sources/images/ComplicacionesPorEdad.png"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 </div>
 <div id="coronopathy-and-succesful-vessels" class="section level3">
 <h3>Coronopathy and succesful vessels</h3>
 <p class="analysis">
 A higher number of angioplasted vessels means lower success rate. 87% for 1 vessel, 80% for 2 vessels and 69% for 3.
 </p>
-<div id="htmlwidget-a89a8be293948fc2fa02" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a89a8be293948fc2fa02">{"x":{"visdat":{"5964129b26ec":["function () ","plotlyVisDat"]},"cur_data":"5964129b26ec","attrs":{"5964129b26ec":{"x":{},"y":{},"name":"Vasos no exitosos","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"},"5964129b26ec.1":{"x":{},"y":{},"name":"Vasos exitosos","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Count"},"barmode":"stack","xaxis":{"domain":[0,1],"automargin":true,"title":"vasos","type":"category","categoryorder":"array","categoryarray":["1 vaso","2 vasos","3 vasos"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["1 vaso","2 vasos","3 vasos"],"y":[15,28,27],"name":"Vasos no exitosos","type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["1 vaso","2 vasos","3 vasos"],"y":[101,117,60],"name":"Vasos exitosos","type":"bar","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-88d59242c7242800dfc5" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-88d59242c7242800dfc5">{"x":{"visdat":{"19676b356a04":["function () ","plotlyVisDat"]},"cur_data":"19676b356a04","attrs":{"19676b356a04":{"x":{},"marker":{"color":"rgba(255, 0, 0, 0.7)"},"y":{},"name":"Unsuccessful vessels","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"},"19676b356a04.1":{"x":{},"marker":{"color":"rgba(0, 128, 0, 0.7)"},"y":{},"name":"Successful vessels","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Count"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Vessels","type":"category","categoryorder":"array","categoryarray":["1 vaso","2 vasos","3 vasos"]},"barmode":"stack","hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["1 vaso","2 vasos","3 vasos"],"marker":{"color":"rgba(255, 0, 0, 0.7)","line":{"color":"rgba(31,119,180,1)"}},"y":[15,28,27],"name":"Unsuccessful vessels","type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["1 vaso","2 vasos","3 vasos"],"marker":{"color":"rgba(0, 128, 0, 0.7)","line":{"color":"rgba(255,127,14,1)"}},"y":[101,117,60],"name":"Successful vessels","type":"bar","error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="predictor" class="section level2">

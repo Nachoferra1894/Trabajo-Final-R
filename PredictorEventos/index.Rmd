@@ -122,13 +122,25 @@ print("Lo relacionamos con la edad")
 library(plotly)
 datawithBomba <- subset(Data,!is.na(Data$`TIEMPO DE BOMBA`))
 #dataSortedByAGe <- Data[(Data$EDAD)]
-
+f <- list(
+  family = "Courier New, monospace",
+  size = 18,
+  color = "balck"
+)
+xAxis <- list(
+  title = "Age",
+  titlefont = f
+)
+yAxis <- list(
+  title = "Pump time",
+  titlefont = f
+)
 fig <- plot_ly(data = Data ,y = ~`TIEMPO DE BOMBA`, x = ~`EDAD`, type = "scatter",
         marker = list(size = 5,
-                      color = 'rgba(255, 182, 193, .9)',
-                      line = list(color = 'rgba(255, 5, 255, .8)',
+                      color = 'rgba(250, 0, 0, .2)',
+                      line = list(color = 'rgba(250, 0, 0, .9)',
                                   width = 2)))
-
+fig <- fig %>% layout(title = "Pump time relate to the ages",xaxis = xAxis, yaxis = yAxis)
 fig
 #Relacionar con complicaciones
 
@@ -294,9 +306,9 @@ vasosNoEX <- c(nrow(vas1NoEx),nrow(vas2NoEx),nrow(vas3NoEx))
 
 datosAGraf <- data.frame(vasos, vasosEX, vasosNoEX)
 
-fig <- plot_ly(datosAGraf, x = ~vasos, y = ~vasosNoEX, type = 'bar', name = 'Vasos no exitosos')
-fig <- fig %>% add_trace(y = ~(vasosEX), name = 'Vasos exitosos')
-fig <- fig %>% layout(yaxis = list(title = 'Count'), barmode = 'stack')
+fig <- plot_ly(datosAGraf, x = ~vasos,marker = list(color = 'rgba(255, 0, 0, 0.7)'), y = ~vasosNoEX, type = 'bar', name = 'Unsuccessful vessels')
+fig <- fig %>% add_trace(y = ~(vasosEX),marker = list(color = 'rgba(0, 128, 0, 0.7)'), name = 'Successful vessels')
+fig <- fig %>% layout(yaxis = list(title = 'Count'),xaxis = list(title = 'Vessels'), barmode = 'stack')
 fig
 
 
@@ -335,11 +347,14 @@ The variables considered to be presented by graphs were: `Tiempo de Bomba`, `Com
 <p class = "analysis">In the following graph the reason for admission is explored. This graph informs us about the most common problems which led to patients being hospitalized. </p>
 
 ```{r treem, echo=FALSE}
+datos <- ((operacionesAngio$`MOTIVO DE INGRESO`))
+values <- sort(table(datos))
+theCats <- (names(values))
 p <- plot_ly(
         name = "Reason for admission",
         type = 'treemap',
         labels = theCats,
-        values ='admisions',
+        values = values,
         parents = NA
 )
 p
@@ -351,10 +366,10 @@ also increase the risk of complications as they are aggressive interventions wit
 ```{r mediaBomba, echo=FALSE, fig.width= 4.3, fig.height= 4.3, warning = FALSE, message = FALSE}
 fig <- plot_ly(data = Data ,y = ~`TIEMPO DE BOMBA`, x = ~`EDAD`, type = "scatter",
         marker = list(size = 5,
-                      color = 'rgba(255, 182, 193, .9)',
-                      line = list(color = 'rgba(255, 5, 255, .8)',
+                      color = 'rgba(250, 0, 0, .2)',
+                      line = list(color = 'rgba(250, 0, 0, .9)',
                                   width = 2)))
-
+fig <- fig %>% layout(title = "Pump time relate to the ages",xaxis = xAxis, yaxis = yAxis)
 fig
 
 ```
@@ -392,15 +407,25 @@ plotTree <- ggplot(data, aes(x=as.factor(id), y=value)) +       # Note that id i
 ### Complications by age
 <p class=""analysis>Age plays an important role at the time of facing complications during and after surgery. </p>
 
-<img src=".\sources\images\ComplicacionesPorEdad.png">
+```{r , echo=FALSE}
+library(tidyverse)
+data=as.data.frame(table(pacComplicac$EDAD))
+ggplot(data, aes(x=Var1, y=Freq)) +
+  geom_segment( aes(x=Var1, xend=Var1, y=0, yend=Freq)) +
+  geom_point( size=5, color="blue", fill=alpha("lightblue", 0.3), alpha=0.7, shape=21, stroke=2) 
+
+
+```
+
 
 ### Coronopathy and succesful vessels
 <p class = "analysis">A higher number of angioplasted vessels means lower success rate. 87% for 1 vessel, 80% for 2 vessels and 69% for 3.</p>
 
 ```{r resumenLesiones, echo=FALSE}
-fig <- plot_ly(datosAGraf, x = ~vasos, y = ~vasosNoEX, type = 'bar', name = 'Vasos no exitosos')
-fig <- fig %>% add_trace(y = ~(vasosEX), name = 'Vasos exitosos')
-fig <- fig %>% layout(yaxis = list(title = 'Count'), barmode = 'stack')
+
+fig <- plot_ly(datosAGraf, x = ~vasos,marker = list(color = 'rgba(255, 0, 0, 0.7)'), y = ~vasosNoEX, type = 'bar', name = 'Unsuccessful vessels')
+fig <- fig %>% add_trace(y = ~(vasosEX),marker = list(color = 'rgba(0, 128, 0, 0.7)'), name = 'Successful vessels')
+fig <- fig %>% layout(yaxis = list(title = 'Count'),xaxis = list(title = 'Vessels'), barmode = 'stack')
 fig
 ```
 
