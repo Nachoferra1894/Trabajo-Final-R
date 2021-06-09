@@ -366,8 +366,8 @@ also increase the risk of complications as they are aggressive interventions wit
 ```{r mediaBomba, echo=FALSE, fig.width= 4.3, fig.height= 4.3, warning = FALSE, message = FALSE}
 fig <- plot_ly(data = Data ,y = ~`TIEMPO DE BOMBA`, x = ~`EDAD`, type = "scatter",
         marker = list(size = 5,
-                      color = 'rgba(250, 0, 0, .2)',
-                      line = list(color = 'rgba(250, 0, 0, .9)',
+                      color = 'rgba(255, 127, 117, .2)',
+                      line = list(color = 'rgba(255, 127, 117, .9)',
                                   width = 2)))
 fig <- fig %>% layout(title = "Pump time relate to the ages",xaxis = xAxis, yaxis = yAxis)
 fig
@@ -424,7 +424,7 @@ ggplot(data, aes(x=Var1, y=Freq)) +
 ```{r resumenLesiones, echo=FALSE}
 
 fig <- plot_ly(datosAGraf, x = ~vasos,marker = list(color = 'rgba(255, 0, 0, 0.7)'), y = ~vasosNoEX, type = 'bar', name = 'Unsuccessful vessels')
-fig <- fig %>% add_trace(y = ~(vasosEX),marker = list(color = 'rgba(0, 128, 0, 0.7)'), name = 'Successful vessels')
+fig <- fig %>% add_trace(y = ~(vasosEX),marker = list(color = 'rgba(0, 220, 0, 0.7)'), name = 'Successful vessels')
 fig <- fig %>% layout(yaxis = list(title = 'Count'),xaxis = list(title = 'Vessels'), barmode = 'stack')
 fig
 ```
@@ -434,5 +434,9 @@ fig
 <p class= "predictor">The analysis of the dataset led to  </p>
 </body>
 <footer>
- 
+## Credits
+<a href="https://www.linkedin.com/in/ignacio-estevo-76383a188/" class="links">Estevo, Ignacio<a/><br>
+<a href="https://www.linkedin.com/in/ignacio-ferrari-149a001b4/" class="links">Ferrari, Ignacio<a/><br>
+<a href="https://www.linkedin.com/mwlite/in/ignacio-mendez-17874b214" class="links">Mendez, Ignacio<a/><br>
+<a class="links">Tittoto, Agustin<a/><br>
   </footer>
