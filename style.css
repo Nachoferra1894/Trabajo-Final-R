@@ -59,15 +59,15 @@ img{
   padding: 10px;
 }
 a{
-     position: relative;
-    font-family: 'Helvetica';
-    text-justify: inter-word;
-    text-align: justify;
-    font-size: 18px;
-    color: black;
-    margin-bottom: 10px;
+     position: relative !important;
+    font-family: 'Helvetica' !important;
+    text-justify: inter-word !important;
+    text-align: justify !important;
+    font-size: 18px !important;
+    color: black !important;
+    margin-bottom: 10px !important;
 }
 a:hover{
-  color: blue;
-  text-decoration: underline;
+  color: blue !important;
+  text-decoration: underline !important;
 }
