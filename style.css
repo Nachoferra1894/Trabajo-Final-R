@@ -58,7 +58,7 @@ h2{
 img{
   padding: 10px;
 }
-a{
+.links{
      position: relative !important;
     font-family: 'Helvetica' !important;
     text-justify: inter-word !important;
@@ -67,7 +67,11 @@ a{
     color: black !important;
     margin-bottom: 10px !important;
 }
-a:hover{
+.links:hover{
+  color: black !important;
+  text-decoration: none !important;
+}
+.hover:hover{
   color: blue !important;
   text-decoration: underline !important;
 }
