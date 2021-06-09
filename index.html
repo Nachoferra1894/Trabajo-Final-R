@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Grupo 7" />
+
+
+<title>Report</title>
+
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.9.4/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Report</h1>
+<h4 class="author">Grupo 7</h4>
+<h4 class="date">27/5/2021</h4>
+
+</div>
+
+
+<body>
+<div id="cardiology-report" class="section level2">
+<h2>Cardiology Report</h2>
+<p class="introduction">
+To optimally analyze the given dataset, we started by searching information and collecting research from universities, institutions and organizations with experience in cardiology. <br>Then we proceeded to apply the knowledge acquired in analyzing the dataset and looking for possible combinations that bring new information to improve the prediction of cardiac events.
+</p>
+<p class="introduction">
+First of all we decided to get some metrics in terms of the dataset. We wanted to know the basic things that we needed in order to start analyzing the given data.<br> Graphs showing the percentages of men and women from the sample and their average ages where key to gain a basic understanding of what we were going to deal with.
+</p>
+<p class="introduction">
+According to research from DR. Enresto Delgado Cidranes in <a href="https://dolor-drdelgadocidranes.com/peligros-de-la-angioplastia/">Peligros de la Angioplastia</a> patients who are over 70 years old have a higher risk during procedure 
+</p>
+<p><img src=".\sources\images\Ambas.png"></p>
+</div>
+<div id="analysis" class="section level2">
+<h2>Analysis</h2>
+<p class="analysis">
+After curating the dataset, a deep analysis was made in the search for connections between the variables which led to more complete queries.<br> The variables considered to be presented by graphs were: <code>Tiempo de Bomba</code>, <code>Complicaciones Inmediatas</code>, <code>Complicaciones Tardias</code>, <code>vasos Angioplastiados</code>
+</p>
+<p class="analysis">
+In the following graph the reason for admission is explored. This graph informs us about the most common problems which led to patients being hospitalized.
+</p>
+<div id="htmlwidget-47c9245c2374dd8a2a2f" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-47c9245c2374dd8a2a2f">{"x":{"visdat":{"173a30e5bd11":["function () ","plotlyVisDat"]},"cur_data":"173a30e5bd11","attrs":{"173a30e5bd11":{"labels":["ANEURISMA AO","OTRA","PROG VALV","SCA SST","SINCOPE","INSUFICIENCIA CARDIACA","SCA no SST","PROG CORONARIO"],"values":[1,1,1,1,2,5,12,194],"parents":null,"name":"Reason for admission","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"treemap"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"labels":["ANEURISMA AO","OTRA","PROG VALV","SCA SST","SINCOPE","INSUFICIENCIA CARDIACA","SCA no SST","PROG CORONARIO"],"values":[1,1,1,1,2,5,12,194],"parents":[null,null,null,null,null,null,null,null],"name":"Reason for admission","type":"treemap","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(255,255,255,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p class="analysis">
+Patients between 55 and 72 years old are more prone to needing an external pump during procedure. It was decided that analyzing the amount of time a patient had the pump, tied to their age could give more insight to the problems related to this. The paper <a href="https://www.fucsalud.edu.co/sites/default/files/2017-01/COMPLICACIONES%20QUIRU%CC%81RGICAS.pdf">Complicaciones quirurgicas</a> gives a more in depth perspective of why older patients tend to need more time with an artificial source of pumping. Cardiac surgeries with extracorporeal circulation also increase the risk of complications as they are aggressive interventions with manipulation and lung collapse during surgery
+</p>
+<div id="htmlwidget-4827263fc94c6ae3abc4" style="width:412.8px;height:412.8px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4827263fc94c6ae3abc4">{"x":{"visdat":{"173a37c1653f":["function () ","plotlyVisDat"]},"cur_data":"173a37c1653f","attrs":{"173a37c1653f":{"y":{},"x":{},"marker":{"size":5,"color":"rgb(255, 127, 117,0.2)","line":{"color":"rgb(255, 127, 117,0.9)","width":2}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Pump time relate to the ages","xaxis":{"domain":[0,1],"automargin":true,"title":"Age","titlefont":{"family":"Courier New, monospace","size":18,"color":"balck"}},"yaxis":{"domain":[0,1],"automargin":true,"title":"Pump time","titlefont":{"family":"Courier New, monospace","size":18,"color":"balck"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"y":[125,85,124,73,65,104,57,90,85,61,210,34,129,95,62,61,219,189,149,69,141,64,76,101,69,39,69,110,60,120,65,69,108,99,90,65,119,87,75,99,105,50,157,93,83,94,80,67,105,172,80,80,69,70,30,100,72,56,68,133,92,80,185,130,83,109,80,75,155,57,157,60,90,110,60,65,90,85,93,99,43,60,440,89,60,0,145,125,212,55,99,84,59,79,94,79,210,64,84,67,75,60,75,65,84,89,77,85,117,101,98,61,62,147,93],"x":[75,30,61,61,68,58,86,63,69,32,69,24,65,47,83,71,67,59,72,37,43,55,46,50,26,45,47,41,47,54,58,57,56,75,60,27,80,26,81,66,74,55,18,67,62,68,61,66,25,66,62,68,66,37,16,51,75,52,52,67,84,53,72,46,66,56,71,74,42,65,73,71,59,58,75,63,68,20,61,74,58,52,63,38,45,65,58,35,55,44,61,42,42,61,61,61,60,29,61,77,31,69,66,62,69,41,76,47,68,72,57,77,61,72,66],"marker":{"color":"rgb(255, 127, 117,0.2)","size":5,"line":{"color":"rgb(255, 127, 117,0.9)","width":2}},"type":"scatter","mode":"markers","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p><img src="./sources\images\ExtraCorporeal.png" /></p>
+<p class="analysis">
+In conclusion, it was found that what was stated in the paper mentioned above also applied to the Hospital Austral Dataset. Patients between the mid fifties and low seventies tend to use an external pump during surgery. This lowers the risk of failure in a risky procedure such as this.
+</p>
+<div id="complications-by-age" class="section level3">
+<h3>Complications by age</h3>
+<p class analysis>
+Age plays an important role at the time of facing complications during and after surgery.
+</p>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+</div>
+<div id="coronopathy-and-succesful-vessels" class="section level3">
+<h3>Coronopathy and succesful vessels</h3>
+<p class="analysis">
+A higher number of angioplasted vessels means lower success rate. 87% for 1 vessel, 80% for 2 vessels and 69% for 3.
+</p>
+<div id="htmlwidget-0b1564c9a19d73e6814b" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0b1564c9a19d73e6814b">{"x":{"visdat":{"173a2b970efc":["function () ","plotlyVisDat"]},"cur_data":"173a2b970efc","attrs":{"173a2b970efc":{"x":{},"marker":{"color":"rgba(255, 0, 0, 0.7)"},"y":{},"name":"Unsuccessful vessels","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"},"173a2b970efc.1":{"x":{},"marker":{"color":"rgba(0, 220, 0, 0.7)"},"y":{},"name":"Successful vessels","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Count"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Vessels","type":"category","categoryorder":"array","categoryarray":["1 vessel","2 vessels","3 vessels"]},"barmode":"stack","hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["1 vessel","2 vessels","3 vessels"],"marker":{"color":"rgba(255, 0, 0, 0.7)","line":{"color":"rgba(31,119,180,1)"}},"y":[15,28,27],"name":"Unsuccessful vessels","type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["1 vessel","2 vessels","3 vessels"],"marker":{"color":"rgba(0, 220, 0, 0.7)","line":{"color":"rgba(255,127,14,1)"}},"y":[101,117,60],"name":"Successful vessels","type":"bar","error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="predictor" class="section level2">
+<h2>Predictor</h2>
+<p class="predictor">
+The analysis of the dataset led to
+</p>
+</body>
+<footer>
+</div>
+<div id="credits" class="section level2">
+<h2>Credits</h2>
+<a href="https://www.linkedin.com/in/ignacio-estevo-76383a188/" class = "links hover">• Estevo, Ignacio </a> <br> <a href="https://www.linkedin.com/in/ignacio-ferrari-149a001b4/" class = "links hover">• Ferrari, Ignacio </a> <br> <a class = "links">• Mendez, Ignacio </a> <br> <a class = "links">• Tittoto, Agustin </a> <br>
+</footer>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
