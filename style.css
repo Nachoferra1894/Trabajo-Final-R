@@ -67,11 +67,7 @@ img{
     color: black;
     margin-bottom: 10px;
 }
-.links:hover{
-  color: black;
-  text-decoration: none;
-}
-.hover:hover{
+.links.hover:hover{
   color: blue;
   text-decoration: underline;
 }
