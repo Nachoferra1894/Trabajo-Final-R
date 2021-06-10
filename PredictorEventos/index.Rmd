@@ -1,7 +1,7 @@
 ---
-title: "Report"
+title: "Cardiology Report"
 author: "Grupo 7"
-date: "27/5/2021"
+date:  "`r format(Sys.time(), '%d %B, %Y')`"
 
 output: 
   html_document:
@@ -316,14 +316,15 @@ fig
 <body>
 ## Cardiology Report
 
-<p class="introduction">To optimally analyze the given dataset, we started by searching information and collecting research from universities,
+<p class="introduction">To optimally analyze the Hospital Austral Cardiology dataset, we started by searching information and collecting research from universities,
              institutions and organizations with experience in cardiology. <br>Then we proceeded to apply the knowledge acquired in analyzing 
              the dataset and looking for possible combinations that bring new information to improve the prediction of cardiac events.</p>
              
 <p class = "introduction">First of all we decided to get some metrics in terms of the dataset. We wanted to know the basic things that we needed in order to start analyzing the given data.<br>
 Graphs showing the percentages of men and women from the sample and their average ages where key to gain a basic understanding of what we were going to deal with.</p>
 <p class = "introduction">According to research from DR. Enresto Delgado Cidranes in <a href="https://dolor-drdelgadocidranes.com/peligros-de-la-angioplastia/">Peligros de la Angioplastia</a> patients who are over
-     70 years old have a higher risk during procedure \n</p>
+     70 years old have a higher risk during procedure. This means that patients above this age are going to be taken in consideration at
+     the time of analyzing the dataset.\n</p>
 
 
 <img src=".\sources\images\Ambas.png"> 
@@ -341,7 +342,7 @@ par(mar=c(5,5,0,3))
 hist((mujeres$EDAD ), main="" , xlim=c(0,100), ylab="Amount of women", xlab="Age", ylim=c(100,0) , las=1 , col="#7DAFEB"  , breaks=10)
 ```
 
-## Analysis
+## Analysis 
 <p class = "analysis"> After curating the dataset, a deep analysis was made in the search for connections between the variables which led to more complete queries.<br>
 The variables considered to be presented by graphs were: `Tiempo de Bomba`, `Complicaciones Inmediatas`, `Complicaciones Tardias`, `vasos Angioplastiados`</p>
 <p class = "analysis">In the following graph the reason for admission is explored. This graph informs us about the most common problems which led to patients being hospitalized. </p>
@@ -369,15 +370,15 @@ fig <- plot_ly(data = Data ,y = ~`TIEMPO DE BOMBA`, x = ~`EDAD`, type = "scatter
                       color = 'rgba(255, 127, 117, .2)',
                       line = list(color = 'rgba(255, 127, 117, .9)',
                                   width = 2)))
-fig <- fig %>% layout(title = "Pump time relate to the ages",xaxis = xAxis, yaxis = yAxis)
+fig <- fig %>% layout(title = "Pump time related to ages",xaxis = xAxis, yaxis = yAxis)
 fig
 
 ```
 
-![](./sources\images\ExtraCorporeal.png);
+![](./sources\images\ExtraCorporeal.png)
 
 <p class = "analysis">In conclusion, it was found that what was stated in the paper mentioned above also applied to the Hospital Austral Dataset. Patients between the mid fifties and low seventies tend to use an external pump during surgery. This lowers the risk of failure in a risky procedure such as this. </p>
-```{r angioplastia, echo=FALSE}
+```{r angioplastia, echo=FALSE, fig.align='center'}
 plotTree <- ggplot(data, aes(x=as.factor(id), y=value)) +       # Note that id is a factor. If x is numeric, there is some space between the first bar
   
   # This add the bars with a blue color
@@ -405,38 +406,40 @@ plotTree <- ggplot(data, aes(x=as.factor(id), y=value)) +       # Note that id i
 
 ```
 ### Complications by age
-<p class=""analysis>Age plays an important role at the time of facing complications during and after surgery. </p>
 
-```{r , echo=FALSE}
+<p class="analysis">Age plays an important role at the time of facing complications during and after surgery. The following graph explores the ages were more problems have been registered. </p>
+
+```{r , echo=FALSE, fig.align='center'}
 library(tidyverse)
 data=as.data.frame(table(pacComplicac$EDAD))
 ggplot(data, aes(x=Var1, y=Freq)) +
-  geom_segment( aes(x=Var1, xend=Var1, y=0, yend=Freq)) +
+  geom_segment( aes(x=Var1, xend=Var1, y=0, yend=Freq)) +  labs(x = "Age", y = "Amount") +
   geom_point( size=5, color="blue", fill=alpha("lightblue", 0.3), alpha=0.7, shape=21, stroke=2) 
 
 
 ```
-
+<p class= "analysis">It can be clearly seen that age affects the number of complications seen in the procedure. Even though the dataset has less than 400 patients, which will lead to deviations, it is clear that people who are in their late 50s are more likely to face problems during procedure. </p>
 
 ### Coronopathy and succesful vessels
 <p class = "analysis">A higher number of angioplasted vessels means lower success rate. 87% for 1 vessel, 80% for 2 vessels and 69% for 3.</p>
 
-```{r resumenLesiones, echo=FALSE}
+```{r resumenLesiones, echo=FALSE, fig.align='center'}
 
 fig <- plot_ly(datosAGraf, x = ~vasos,marker = list(color = 'rgba(255, 0, 0, 0.7)'), y = ~vasosNoEX, type = 'bar', name = 'Unsuccessful vessels')
-fig <- fig %>% add_trace(y = ~(vasosEX),marker = list(color = 'rgba(0, 220, 0, 0.7)'), name = 'Successful vessels')
+fig <- fig %>% add_trace(y = ~(vasosEX),marker = list(color = '#AAF683'), name = 'Successful vessels')
 fig <- fig %>% layout(yaxis = list(title = 'Count'),xaxis = list(title = 'Vessels'), barmode = 'stack')
 fig
 ```
-
+<p class = "analysis">After analyzing the dataset, some conclusions surged by looking and understanding the previous graphs and plots. Clearly, older people are more prone to have lessions and face problems during the surgery. This led to quetioning how can this be reduced?<br>
+Studies have shown that the use of external pump in risky procedures reduces the potential of facing complications by 25%. As a starting point a deeper analysis is going to be made on whether it is more convenient to the hospital to involve more patients into this type of external aid to prevent future problems and increase the success rate.</p>
 
 ## Predictor
-<p class= "predictor">The analysis of the dataset led to  </p>
+<p class= "predictor">The analysis of the dataset led to...  </p>
 </body>
-<footer>
-## Credits
-<a href="https://www.linkedin.com/in/ignacio-estevo-76383a188/" class="links">•Estevo, Ignacio<a/><br>
-<a href="https://www.linkedin.com/in/ignacio-ferrari-149a001b4/" class="links">•Ferrari, Ignacio<a/><br>
-<a href="https://www.linkedin.com/mwlite/in/ignacio-mendez-17874b214" class="links">•Mendez, Ignacio<a/><br>
-<a class="links">•Titotto, Agustin<a/><br>
+<footer class="foot">
+## Team
+<a href="https://www.linkedin.com/in/ignacio-estevo-76383a188/" class="links">Estevo, Ignacio<a/><br>
+<a href="https://www.linkedin.com/in/ignacio-ferrari-149a001b4/" class="links">Ferrari, Ignacio<a/><br>
+<a href="https://www.linkedin.com/mwlite/in/ignacio-mendez-17874b214" class="links">Mendez, Ignacio<a/><br>
+<a class="links">Titotto, Agustin<a/><br>
   </footer>

@@ -1,14 +1,32 @@
-*{
-/*background-color: rgb(40,40,40);*/
-}
-
+@font-face {
+    font-family: 'Hartwell Thin';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Hartwell Thin'), url(./sources/fonts/Hartwell Thin.woff) format('woff');
+    }
+@font-face {
+    font-family: 'Hartwell Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Hartwell Regular'), url(./sources/fonts/Hartwell Regular.woff) format('woff');
+    }
+    
 row{
   background-color: rgb(255,255,255);
   
 }
+h3{
+ 
+  padding: 10px;
+  background-color: #DCE9F9;
+}
 
+.toc-content{
+  background-color: rgb(255, 255, 255);
+}
 body{
   width: 80%;
+  background-color: #DCE9F9;
    
 
 }
@@ -26,6 +44,7 @@ body{
 }
 
 h2{
+  
   padding: 10px;
   background-color: #7DAFEB;
 }
@@ -38,7 +57,7 @@ h2{
 }
 .introduction{
     position: relative;
-    font-family: 'Helvetica';
+    font-family: 'Hartwell Regular';
     text-justify: inter-word;
     text-align: justify;
     font-size: 18px;
@@ -46,7 +65,7 @@ h2{
 }
 .analysis{
    position: relative;
-    font-family: 'Helvetica';
+    font-family: 'Hartwell Regular';
     text-justify: inter-word;
     text-align: justify;
     font-size: 18px;
@@ -58,15 +77,21 @@ img{
   padding: 10px;
 }
 .links{
-     position: relative !important;
-    font-family: 'Helvetica' !important;
-    text-justify: inter-word !important;
-    text-align: justify !important;
-    font-size: 18px !important;
-    color: black !important;
-    margin-bottom: 10px !important;
+     position: relative;
+    font-family: 'Hartwell Thin';
+    text-justify: inter-word;
+    text-align: justify;
+    font-size: 18px;
+    color: black;
+    margin-bottom: 10px;
 }
 .links:hover{
-  color: blue !important;
-  text-decoration: underline !important;
+  font-family: 'Hartwell Regular';
+  size: 130%;
+  color: #7DAFEB;
+  text-decoration: none;
+  
+}
+.foot{
+  height: 200px;
 }
