@@ -424,8 +424,10 @@ ggplot(data, aes(x=Var1, y=Freq)) +
 <p class = "analysis">A higher number of angioplasted vessels means lower success rate. 87% for 1 vessel, 80% for 2 vessels and 69% for 3.</p>
 
 ```{r resumenLesiones, echo=FALSE, fig.align='center'}
-
-fig <- plot_ly(datosAGraf, x = ~vasos,marker = list(color = 'rgba(255, 0, 0, 0.7)'), y = ~vasosNoEX, type = 'bar', name = 'Unsuccessful vessels')
+newDatosAGraf <- datosAGraf
+a <- factor(newDatosAGraf$vasos)
+newDatosAGraf$vasos <- factor(a,labels=c("1 vessel","2 vessels","3 vessels"))
+fig <- plot_ly(newDatosAGraf, x = ~vasos,marker = list(color = 'rgba(255, 0, 0, 0.7)'), y = ~vasosNoEX, type = 'bar', name = 'Unsuccessful vessels')
 fig <- fig %>% add_trace(y = ~(vasosEX),marker = list(color = '#AAF683'), name = 'Successful vessels')
 fig <- fig %>% layout(yaxis = list(title = 'Count'),xaxis = list(title = 'Vessels'), barmode = 'stack')
 fig
