@@ -347,19 +347,24 @@ hist((mujeres$EDAD ), main="" , xlim=c(0,100), ylab="Amount of women", xlab="Age
 The variables considered to be presented by graphs were: `Tiempo de Bomba`, `Complicaciones Inmediatas`, `Complicaciones Tardias`, `vasos Angioplastiados`</p>
 <p class = "analysis">In the following graph the reason for admission is explored. This graph informs us about the most common problems which led to patients being hospitalized. </p>
 
-```{r treem, echo=FALSE}
+```{r treem, echo=FALSE, warning=FALSE}
+library(colormap)
 datos <- ((operacionesAngio$`MOTIVO DE INGRESO`))
 values <- sort(table(datos))
 theCats <- (names(values))
 p <- plot_ly(
-        name = "Reason for admission",
+
+name = "Reason for admission",
         type = 'treemap',
         labels = theCats,
         values = values,
-        parents = NA
+        parents = NA,
 )
+p <- p %>% layout(treemapcolorway=(colormap(colormap=c('#FFFFFF','#FF0000'),nshades = 8)))
 p
+
 ```
+![](./sources\images\Table.png)
 
 <p class = "analysis"> Patients between 55 and 72 years old are more prone to needing an external pump during procedure. It was decided that analyzing the amount of time a patient had the pump, tied to their age could give more insight to the problems related to this. The paper <a href="https://www.fucsalud.edu.co/sites/default/files/2017-01/COMPLICACIONES%20QUIRU%CC%81RGICAS.pdf">Complicaciones quirurgicas</a> gives a more in depth perspective of why older patients tend to need more time with an artificial source of pumping. Cardiac surgeries with extracorporeal circulation
 also increase the risk of complications as they are aggressive interventions with manipulation and lung collapse during surgery</p>
@@ -374,8 +379,8 @@ fig <- fig %>% layout(title = "Pump time related to ages",xaxis = xAxis, yaxis =
 fig
 
 ```
-
 ![](./sources\images\ExtraCorporeal.png)
+
 
 <p class = "analysis">In conclusion, it was found that what was stated in the paper mentioned above also applied to the Hospital Austral Dataset. Patients between the mid fifties and low seventies tend to use an external pump during surgery. This lowers the risk of failure in a risky procedure such as this. </p>
 ```{r angioplastia, echo=FALSE, fig.align='center'}
@@ -402,8 +407,6 @@ plotTree <- ggplot(data, aes(x=as.factor(id), y=value)) +       # Note that id i
   # Add the labels, using the label_data dataframe that we have created before
   geom_text(data=label_data, aes(x=id, y=value+10, label=individual, hjust=hjust), color="black", fontface="bold",alpha=0.6, size=2.5, angle= label_data$angle, inherit.aes = FALSE )
 
-
-
 ```
 ### Complications by age
 
@@ -419,6 +422,46 @@ ggplot(data, aes(x=Var1, y=Freq)) +
 
 ```
 <p class= "analysis">It can be clearly seen that age affects the number of complications seen in the procedure. Even though the dataset has less than 400 patients, which will lead to deviations, it is clear that people who are in their late 50s are more likely to face problems during procedure. </p>
+
+### Complications by sex
+
+<p class="analysis"> Another key factor is the sex of the patients </p>
+
+```{r , echo=FALSE, fig.align='center'}
+library(ggplot2)
+theDates=(pacComplicac$SEXO)
+theValues= sort(table(theDates))
+theCats <- (names(theValues))
+data <- data.frame(
+  category=theCats,
+  count=round(as.vector(theValues)/sum(theValues)*100)
+)
+# Compute percentages
+data$fraction <- data$count / sum(data$count)
+
+# Compute the cumulative percentages (top of each rectangle)
+data$ymax <- cumsum(data$fraction)
+
+# Compute the bottom of each rectangle
+data$ymin <- c(0, head(data$ymax, n=-1))
+
+# Compute label position
+data$labelPosition <- (data$ymax + data$ymin) / 2
+
+# Compute a good label
+data$label <- paste0(data$category,"\n", data$count,"%")
+
+# Make the plot
+ggplot(data, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=category)) +
+  geom_rect() +
+  geom_label( x=3.5, aes(y=labelPosition, label=label), size=6) +
+  coord_polar(theta="y") +
+  xlim(c(2, 4)) +
+  theme_void() +
+  theme(legend.position = "none")
+
+```
+<p class= "analysis">As we can see, the difference between men and women is 14% less than in the entire dataset, which encourages us to think that women are more likely to have complications during of after surgery.</p>
 
 ### Coronopathy and succesful vessels
 <p class = "analysis">A higher number of angioplasted vessels means lower success rate. 87% for 1 vessel, 80% for 2 vessels and 69% for 3.</p>
