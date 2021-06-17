@@ -316,24 +316,34 @@ fig
 
 #Predictor
 #Ideas: Predecir si una persona va a tener complicaciones inmediatas basado en si esta usando circulacion extracorporea, su sexo y
-# Predecir si una persona va a necesitar circulacion extracorporea
+# Predecir si una persona va a necesitar circulacion extracorporea basado en su edad, su sexo
 subsetForPredictor <- Data
-as.factor(subsetForPredictor$`COMPLICACIONES INMEDIATAS`)
-as.factor(subsetForPredictor$`COMPLICACIONES TARDIAS`)
+
+#Arreglamos el campo de Circulacion Extracorporea
+subsetForPredictor$`CIRCULACION EXTRACORPOREA`[is.na(subsetForPredictor$`CIRCULACION EXTRACORPOREA`)] <- 0 #Asumimos NA = No pump
+subsetForPredictor$`CIRCULACION EXTRACORPOREA`[subsetForPredictor$`CIRCULACION EXTRACORPOREA` == "NO"] <- 0
+subsetForPredictor$`CIRCULACION EXTRACORPOREA`[subsetForPredictor$`CIRCULACION EXTRACORPOREA` != 0] <- 1
+
+# Tiempo de bomba = NA lo convertimos en 0. Tomamos a 0 como que no usaron pump
+subsetForPredictor$`TIEMPO DE BOMBA`[is.na(subsetForPredictor$`TIEMPO DE BOMBA`)] <- 0 #Asumimos NA = No pump
+
+#Pasamos los values a numeros
 subsetForPredictor$`COMPLICACIONES TARDIAS` <- as.numeric(subsetForPredictor$`COMPLICACIONES TARDIAS`)
 subsetForPredictor$`CIRCULACION EXTRACORPOREA` <- as.numeric(subsetForPredictor$`CIRCULACION EXTRACORPOREA`)
 subsetForPredictor$`COMPLICACIONES INMEDIATAS` <-as.numeric(subsetForPredictor$`COMPLICACIONES INMEDIATAS`)
-subsetForPredictor$DIABETES <- as.numeric(subsetForPredictor$DIABETES)
-as.factor(subsetForPredictor$DIABETES)
-subsetForPredictor$`CIRCULACION EXTRACORPOREA`[is.na(subsetForPredictor$`CIRCULACION EXTRACORPOREA`)] <- 0 #Asumo que los que son NA es porque no usaron pump.
-subsetForPredictor$`CIRCULACION EXTRACORPOREA`[subsetForPredictor$`CIRCULACION EXTRACORPOREA` != 0] <- 1
-
-as.factor(subsetForPredictor$`CIRCULACION EXTRACORPOREA`)
-as.factor(subsetForPredictor$EDAD)
 subsetForPredictor$EDAD <- as.numeric(subsetForPredictor$EDAD)
-as.factor(subsetForPredictor$SEXO)
+subsetForPredictor$DIABETES <- as.numeric(subsetForPredictor$DIABETES)
+subsetForPredictor$`TIEMPO DE BOMBA` <- as.numeric(subsetForPredictor$`TIEMPO DE BOMBA`)
 
-str(subsetForPredictor$`COMPLICACIONES INMEDIATAS`)
+#Hacemos los factors
+as.factor(subsetForPredictor$`COMPLICACIONES INMEDIATAS`)
+as.factor(subsetForPredictor$`COMPLICACIONES TARDIAS`)
+as.factor(subsetForPredictor$`CIRCULACION EXTRACORPOREA`)
+as.factor(subsetForPredictor$DIABETES)
+as.factor(subsetForPredictor$EDAD)
+as.factor(subsetForPredictor$SEXO) # 0 = men 1 = women
+as.factor(subsetForPredictor$`TIEMPO DE BOMBA`)
+
 
 #Separate into training and test datasets
 sample.size <- floor(0.75 * nrow(subsetForPredictor))
@@ -346,7 +356,7 @@ test.complicaciones <- subsetForPredictor[-train,]
 
 
 # Build the predictor model
-hyp.out2 <- glm(`COMPLICACIONES INMEDIATAS`~`CIRCULACION EXTRACORPOREA` + EDAD + DIABETES,
+hyp.out2 <- glm(`COMPLICACIONES INMEDIATAS`~`CIRCULACION EXTRACORPOREA` + EDAD + DIABETES + `TIEMPO DE BOMBA`,
                data=train.complicaciones, family="binomial")
 
 summary(hyp.out2)
@@ -360,6 +370,48 @@ predsAll<-predict(hyp.out2, type = "response")
 predDat <- with(test.complicaciones,
                 expand.grid(age = c(52,33),
                             wkdayr = c(0,10)))
+
+
+#Tito predictor
+Data2 <- Data
+str(Data2$`COMPLICACIONES INMEDIATAS`)
+levels(Data2$`COMPLICACIONES INMEDIATAS`) 
+as.factor(Data2$`COMPLICACIONES INMEDIATAS`)
+Data2 <- as.numeric(Data2$`COMPLICACIONES INMEDIATAS`)
+
+hyp.out.Inmediatas <- glm(COMPLICACIONES.INMEDIATAS~EDAD,
+               data=Data, family="binomial")  
+summary(hyp.out.Inmediatas)
+coef(summary(hyp.out.Inmediatas))
+
+hyp.out.Tardias <- glm(COMPLICACIONES.TARDIAS~EDAD,
+               data=Data, family="binomial") 
+summary(hyp.out.Tardias)
+coef(summary(hyp.out.Tardias))
+
+DataTiempoDeBomba <- subset(Data, Data$TIEMPO.DE.BOMBA != "#N/D")
+str(DataTiempoDeBomba$TIEMPO.DE.BOMBA)
+DataTiempoDeBomba$TIEMPO.DE.BOMBA <- as.numeric(DataTiempoDeBomba$TIEMPO.DE.BOMBA)
+sexo <- factor(DataTiempoDeBomba$SEXO)
+sexo <- factor(DataTiempoDeBomba$SEXO,labels=c(0,1))
+DataTiempoDeBomba$SEXO <- sexo
+hyp.out.Complicaciones <- glm(COMPLICACIONES.INMEDIATAS~EDAD+TIEMPO.DE.BOMBA+SEXO,
+                              data=DataTiempoDeBomba, family="binomial") 
+summary(hyp.out.Complicaciones)
+coef(summary(hyp.out.Complicaciones))
+
+pacConCirculacionExtraND <- subset(Data, Data$CIRCULACION.EXTRACORPOREA != "#N/D")
+pacConCirculacionExtraND$CIRCULACION.EXTRACORPOREA[pacConCirculacionExtraND$CIRCULACION.EXTRACORPOREA == "NO"] <- 0
+pacConCirculacionExtraND$CIRCULACION.EXTRACORPOREA[pacConCirculacionExtraND$CIRCULACION.EXTRACORPOREA != 0] <- 1
+sexo <- factor(pacConCirculacionExtraND$SEXO)
+sexo <- factor(pacConCirculacionExtraND$SEXO,labels=c(0,1))
+pacConCirculacionExtraND$SEXO <- sexo
+
+
+hyp.out.Complicaciones <- glm(COMPLICACIONES.INMEDIATAS~EDAD+CIRCULACION.EXTRACORPOREA+SEXO,
+                              data=pacConCirculacionExtraND, family="binomial") 
+summary(hyp.out.Complicaciones)
+coef(summary(hyp.out.Complicaciones))
 
 ```
 <body>
