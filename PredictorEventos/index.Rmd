@@ -312,6 +312,55 @@ fig <- fig %>% layout(yaxis = list(title = 'Count'),xaxis = list(title = 'Vessel
 fig
 
 
+
+
+#Predictor
+#Ideas: Predecir si una persona va a tener complicaciones inmediatas basado en si esta usando circulacion extracorporea, su sexo y
+# Predecir si una persona va a necesitar circulacion extracorporea
+subsetForPredictor <- Data
+as.factor(subsetForPredictor$`COMPLICACIONES INMEDIATAS`)
+as.factor(subsetForPredictor$`COMPLICACIONES TARDIAS`)
+subsetForPredictor$`COMPLICACIONES TARDIAS` <- as.numeric(subsetForPredictor$`COMPLICACIONES TARDIAS`)
+subsetForPredictor$`CIRCULACION EXTRACORPOREA` <- as.numeric(subsetForPredictor$`CIRCULACION EXTRACORPOREA`)
+subsetForPredictor$`COMPLICACIONES INMEDIATAS` <-as.numeric(subsetForPredictor$`COMPLICACIONES INMEDIATAS`)
+subsetForPredictor$DIABETES <- as.numeric(subsetForPredictor$DIABETES)
+as.factor(subsetForPredictor$DIABETES)
+subsetForPredictor$`CIRCULACION EXTRACORPOREA`[is.na(subsetForPredictor$`CIRCULACION EXTRACORPOREA`)] <- 0 #Asumo que los que son NA es porque no usaron pump.
+subsetForPredictor$`CIRCULACION EXTRACORPOREA`[subsetForPredictor$`CIRCULACION EXTRACORPOREA` != 0] <- 1
+
+as.factor(subsetForPredictor$`CIRCULACION EXTRACORPOREA`)
+as.factor(subsetForPredictor$EDAD)
+subsetForPredictor$EDAD <- as.numeric(subsetForPredictor$EDAD)
+as.factor(subsetForPredictor$SEXO)
+
+str(subsetForPredictor$`COMPLICACIONES INMEDIATAS`)
+
+#Separate into training and test datasets
+sample.size <- floor(0.75 * nrow(subsetForPredictor))
+set.seed(123)
+train <- sample(seq_len(nrow(subsetForPredictor)),size = sample.size)
+
+train.complicaciones <- subsetForPredictor[train,]
+test.complicaciones <- subsetForPredictor[-train,]
+
+
+
+# Build the predictor model
+hyp.out2 <- glm(`COMPLICACIONES INMEDIATAS`~`CIRCULACION EXTRACORPOREA` + EDAD + DIABETES,
+               data=train.complicaciones, family="binomial")
+
+summary(hyp.out2)
+
+coef(summary(hyp.out2))
+
+predsAll<-predict(hyp.out2, type = "response")
+
+
+
+predDat <- with(test.complicaciones,
+                expand.grid(age = c(52,33),
+                            wkdayr = c(0,10)))
+
 ```
 <body>
 ## Cardiology Report
@@ -370,6 +419,7 @@ p
 also increase the risk of complications as they are aggressive interventions with manipulation and lung collapse during surgery</p>
 
 ```{r mediaBomba, echo=FALSE, fig.width= 4.3, fig.height= 4.3, warning = FALSE, message = FALSE}
+
 fig <- plot_ly(data = Data ,y = ~`TIEMPO DE BOMBA`, x = ~`EDAD`, type = "scatter",
         marker = list(size = 5,
                       color = 'rgba(255, 127, 117, .2)',
