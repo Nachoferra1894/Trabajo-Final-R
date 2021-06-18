@@ -11,25 +11,42 @@
     src: local('Hartwell Regular'), url(./sources/fonts/Hartwell Regular.woff) format('woff');
     }
     
-row{
-  background-color: rgb(255,255,255);
-  
+.images{
+   margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
+h2{
+  background-color: #7DAFEB;
+  background-color: 'rgb(243,100,20)';
+  margin-top: 35px;
+  padding: 15px;
+  margin-bottom: 40px
+}  
+
 h3{
-  margin-top: 20px;
-  margin-bottom: 15px;
-  padding: 10px;
   background-color: #DCE9F9;
+  margin-top: 35px;
+  padding: 15px;
+  margin-bottom: 40px
 }
 
 .toc-content{
   background-color: rgb(255, 255, 255);
 }
+
 body{
   width: 80%;
   background-color: #DCE9F9;
-   
+}
+.toc-content col-xs-12 col-sm-8 col-md-9{
+  width: 1000px;
+}
 
+li{
+  text-decoration: none;
+  font-family: 'Hartwell Regular';
+    font-size: 18px;
 }
 
 .plotly html-widget html-widget-static-bound js-plotly-plot{
@@ -40,22 +57,20 @@ body{
   height: 480px;
   width: 440px;
 }
+
 .fluid-row{
   background-color: rgb(100,100,100);
 }
 
-h2{
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #7DAFEB;
-}
 .tocify{
   box-sizing: border-box;
   color: Black;
 }
+
 .fluid-row .title{
   font-weight: bold;
 }
+
 .introduction{
     position: relative;
     font-family: 'Hartwell Regular';
@@ -71,6 +86,15 @@ h2{
     text-align: justify;
     font-size: 18px;
 }
+
+.predictor{
+   position: relative;
+    font-family: 'Hartwell Regular';
+    text-justify: inter-word;
+    text-align: justify;
+    font-size: 18px;
+}
+
 .ageChart{
   size: 40%;
 }
