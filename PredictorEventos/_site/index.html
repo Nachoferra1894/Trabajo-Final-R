@@ -41,6 +41,8 @@
 <script src="site_libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 <link href="site_libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="site_libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -238,7 +240,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Cardiology Report</h1>
 <h4 class="author">Grupo 7</h4>
-<h4 class="date">15 June, 2021</h4>
+<h4 class="date">18 June, 2021</h4>
 
 </div>
 
@@ -252,31 +254,120 @@ To optimally analyze the Hospital Austral Cardiology dataset, we started by sear
 <p class="introduction">
 First of all we decided to get some metrics in terms of the dataset. We wanted to know the basic things that we needed in order to start analyzing the given data.<br> Graphs showing the percentages of men and women from the sample and their average ages where key to gain a basic understanding of what we were going to deal with.
 </p>
-<p class="introduction">
-According to research from DR. Enresto Delgado Cidranes in <a href="https://dolor-drdelgadocidranes.com/peligros-de-la-angioplastia/">Peligros de la Angioplastia</a> patients who are over 70 years old have a higher risk during procedure. This means that patients above this age are going to be taken in consideration at the time of analyzing the dataset.
-</p>
-<p><img src=".\sources\images\Ambas.png"></p>
 </div>
 <div id="analysis" class="section level2">
 <h2>Analysis</h2>
+<p class="introduction">
+According to research from DR. Enresto Delgado Cidranes in <a href="https://dolor-drdelgadocidranes.com/peligros-de-la-angioplastia/">Peligros de la Angioplastia</a> patients who are over 70 years old have a higher risk during procedure. This means that patients above this age are going to be taken in consideration at the time of analyzing the dataset. Above that, male patients are more prone to face complications, either immediate or late.
+</p>
+<img src=".\sources\images\Ambas.png">
 <p class="analysis">
 After curating the dataset, a deep analysis was made in the search for connections between the variables which led to more complete queries.<br> The variables considered to be presented by graphs were: <code>Tiempo de Bomba</code>, <code>Complicaciones Inmediatas</code>, <code>Complicaciones Tardias</code>, <code>vasos Angioplastiados</code>
 </p>
 <p class="analysis">
 In the following graph the reason for admission is explored. This graph informs us about the most common problems which led to patients being hospitalized.
 </p>
-<div id="htmlwidget-0359d2be6fd82ac8d0d5" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0359d2be6fd82ac8d0d5">{"x":{"visdat":{"19a537afb16c":["function () ","plotlyVisDat"]},"cur_data":"19a537afb16c","attrs":{"19a537afb16c":{"labels":["ANEURISMA AO","OTRA","PROG VALV","SCA SST","SINCOPE","INSUFICIENCIA CARDIACA","SCA no SST","PROG CORONARIO"],"values":[1,1,1,1,2,5,12,194],"parents":null,"name":"Reason for admission","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"treemap"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"treemapcolorway":["#ff0000ff","#ff2424ff","#ff4949ff","#ff6d6dff","#ff9292ff","#ffb6b6ff","#ffdbdbff","#ffffffff"],"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"labels":["ANEURISMA AO","OTRA","PROG VALV","SCA SST","SINCOPE","INSUFICIENCIA CARDIACA","SCA no SST","PROG CORONARIO"],"values":[1,1,1,1,2,5,12,194],"parents":[null,null,null,null,null,null,null,null],"name":"Reason for admission","type":"treemap","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(255,255,255,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-<p><img src="./sources\images\Table.png" /></p>
+<div id="htmlwidget-5c022e702378abd69f2c" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5c022e702378abd69f2c">{"x":{"visdat":{"33ca69598020":["function () ","plotlyVisDat"]},"cur_data":"33ca69598020","attrs":{"33ca69598020":{"labels":["ANEURISMA AO","OTRA","PROG VALV","SCA SST","SINCOPE","INSUFICIENCIA CARDIACA","SCA no SST","PROG CORONARIO"],"values":[1,1,1,1,2,5,12,194],"parents":null,"name":"Reason for admission","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"treemap"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"treemapcolorway":["#ff494aff","#ff6364ff","#ff7d7eff","#ff9797ff","#ffb1b2ff","#ffcbcbff","#ffe5e5ff","#ffffffff"],"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"labels":["ANEURISMA AO","OTRA","PROG VALV","SCA SST","SINCOPE","INSUFICIENCIA CARDIACA","SCA no SST","PROG CORONARIO"],"values":[1,1,1,1,2,5,12,194],"parents":[null,null,null,null,null,null,null,null],"name":"Reason for admission","type":"treemap","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(255,255,255,1)"}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;color: white !important;">
+datos
+</th>
+<th style="text-align:right;color: white !important;">
+Freq
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: black !important;background-color: #ffffff !important;">
+ANEURISMA AO
+</td>
+<td style="text-align:right;color: black !important;background-color: #ffffff !important;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: black !important;background-color: #ffe5e5 !important;">
+OTRA
+</td>
+<td style="text-align:right;color: black !important;background-color: #ffe5e5 !important;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: black !important;background-color: #ffcbcb !important;">
+PROG VALV
+</td>
+<td style="text-align:right;color: black !important;background-color: #ffcbcb !important;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: black !important;background-color: #ffb1b2 !important;">
+SCA SST
+</td>
+<td style="text-align:right;color: black !important;background-color: #ffb1b2 !important;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: black !important;background-color: #ff9797 !important;">
+SINCOPE
+</td>
+<td style="text-align:right;color: black !important;background-color: #ff9797 !important;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: black !important;background-color: #ff7d7e !important;">
+INSUFICIENCIA CARDIACA
+</td>
+<td style="text-align:right;color: black !important;background-color: #ff7d7e !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: black !important;background-color: #ff6364 !important;">
+SCA no SST
+</td>
+<td style="text-align:right;color: black !important;background-color: #ff6364 !important;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: black !important;background-color: #ff494a !important;">
+PROG CORONARIO
+</td>
+<td style="text-align:right;color: black !important;background-color: #ff494a !important;">
+194
+</td>
+</tr>
+</tbody>
+</table>
+<div id="pump-times-by-age" class="section level3">
+<h3>Pump times by age</h3>
 <p class="analysis">
 Patients between 55 and 72 years old are more prone to needing an external pump during procedure. It was decided that analyzing the amount of time a patient had the pump, tied to their age could give more insight to the problems related to this. The paper <a href="https://www.fucsalud.edu.co/sites/default/files/2017-01/COMPLICACIONES%20QUIRU%CC%81RGICAS.pdf">Complicaciones quirurgicas</a> gives a more in depth perspective of why older patients tend to need more time with an artificial source of pumping. Cardiac surgeries with extracorporeal circulation also increase the risk of complications as they are aggressive interventions with manipulation and lung collapse during surgery
 </p>
-<div id="htmlwidget-45372fa63aa1364fb52c" style="width:412.8px;height:412.8px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-45372fa63aa1364fb52c">{"x":{"visdat":{"19a55233a83a":["function () ","plotlyVisDat"]},"cur_data":"19a55233a83a","attrs":{"19a55233a83a":{"y":{},"x":{},"marker":{"size":5,"color":"rgba(255, 127, 117, .2)","line":{"color":"rgba(255, 127, 117, .9)","width":2}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Pump time related to ages","xaxis":{"domain":[0,1],"automargin":true,"title":"Age","titlefont":{"family":"Courier New, monospace","size":18,"color":"balck"}},"yaxis":{"domain":[0,1],"automargin":true,"title":"Pump time","titlefont":{"family":"Courier New, monospace","size":18,"color":"balck"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"y":[125,85,124,73,65,104,57,90,85,61,210,34,129,95,62,61,219,189,149,69,141,64,76,101,69,39,69,110,60,120,65,69,108,99,90,65,119,87,75,99,105,50,157,93,83,94,80,67,105,172,80,80,69,70,30,100,72,56,68,133,92,80,185,130,83,109,80,75,155,57,157,60,90,110,60,65,90,85,93,99,43,60,440,89,60,0,145,125,212,55,99,84,59,79,94,79,210,64,84,67,75,60,75,65,84,89,77,85,117,101,98,61,62,147,93],"x":[75,30,61,61,68,58,86,63,69,32,69,24,65,47,83,71,67,59,72,37,43,55,46,50,26,45,47,41,47,54,58,57,56,75,60,27,80,26,81,66,74,55,18,67,62,68,61,66,25,66,62,68,66,37,16,51,75,52,52,67,84,53,72,46,66,56,71,74,42,65,73,71,59,58,75,63,68,20,61,74,58,52,63,38,45,65,58,35,55,44,61,42,42,61,61,61,60,29,61,77,31,69,66,62,69,41,76,47,68,72,57,77,61,72,66],"marker":{"color":"rgba(255, 127, 117, .2)","size":5,"line":{"color":"rgba(255, 127, 117, .9)","width":2}},"type":"scatter","mode":"markers","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-<p><img src="./sources\images\ExtraCorporeal.png" /></p>
-<p class="analysis">
-In conclusion, it was found that what was stated in the paper mentioned above also applied to the Hospital Austral Dataset. Patients between the mid fifties and low seventies tend to use an external pump during surgery. This lowers the risk of failure in a risky procedure such as this.
+<br>
+<p>
 </p>
+<div id="htmlwidget-e38cbba436fc2a7828b0" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e38cbba436fc2a7828b0">{"x":{"visdat":{"33ca556d6770":["function () ","plotlyVisDat"]},"cur_data":"33ca556d6770","attrs":{"33ca556d6770":{"y":{},"x":{},"marker":{"size":5,"color":"rgba(255, 127, 117, .2)","line":{"color":"rgba(255, 127, 117, .9)","width":2}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Pump time related to ages","xaxis":{"domain":[0,1],"automargin":true,"title":"Age","titlefont":{"family":"Courier New, monospace","size":18,"color":"black"}},"yaxis":{"domain":[0,1],"automargin":true,"title":"Pump time","titlefont":{"family":"Courier New, monospace","size":18,"color":"black"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"y":[125,85,124,73,65,104,57,90,85,61,210,34,129,95,62,61,219,189,149,69,141,64,76,101,69,39,69,110,60,120,65,69,108,99,90,65,119,87,75,99,105,50,157,93,83,94,80,67,105,172,80,80,69,70,30,100,72,56,68,133,92,80,185,130,83,109,80,75,155,57,157,60,90,110,60,65,90,85,93,99,43,60,440,89,60,0,145,125,212,55,99,84,59,79,94,79,210,64,84,67,75,60,75,65,84,89,77,85,117,101,98,61,62,147,93],"x":[75,30,61,61,68,58,86,63,69,32,69,24,65,47,83,71,67,59,72,37,43,55,46,50,26,45,47,41,47,54,58,57,56,75,60,27,80,26,81,66,74,55,18,67,62,68,61,66,25,66,62,68,66,37,16,51,75,52,52,67,84,53,72,46,66,56,71,74,42,65,73,71,59,58,75,63,68,20,61,74,58,52,63,38,45,65,58,35,55,44,61,42,42,61,61,61,60,29,61,77,31,69,66,62,69,41,76,47,68,72,57,77,61,72,66],"marker":{"color":"rgba(255, 127, 117, .2)","size":5,"line":{"color":"rgba(255, 127, 117, .9)","width":2}},"type":"scatter","mode":"markers","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<center>
+<img src="./sources\images\ExtraCorporeal.png" />
+</center>
+<p class="analysis">
+In conclusion, it was found that what was stated in the paper mentioned above also applied to the Hospital Austral Dataset. Patients between the mid fifties and low seventies tend to use an external pump during surgery. This increases the risk of failure in a risky procedure such as this.This is due to the fact that extracorporeal circulation in cardiovascular surgery replaces cardiac and pulmonary function, which generates functional and systemic changes that expose the patient to complications.
+</p>
+<p><br></p>
+<br>
+<p>
+</p>
+</div>
 <div id="complications-by-age" class="section level3">
 <h3>Complications by age</h3>
 <p class="analysis">
@@ -285,6 +376,9 @@ Age plays an important role at the time of facing complications during and after
 <img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" />
 <p class="analysis">
 It can be clearly seen that age affects the number of complications seen in the procedure. Even though the dataset has less than 400 patients, which will lead to deviations, it is clear that people who are in their late 50s are more likely to face problems during procedure.
+</p>
+<br>
+<p>
 </p>
 </div>
 <div id="complications-by-sex" class="section level3">
@@ -296,26 +390,111 @@ Another key factor is the sex of the patients
 <p class="analysis">
 As we can see, the difference between men and women is 14% less than in the entire dataset, which encourages us to think that women are more likely to have complications during of after surgery.
 </p>
+<br>
+<p>
+</p>
 </div>
 <div id="coronopathy-and-succesful-vessels" class="section level3">
 <h3>Coronopathy and succesful vessels</h3>
 <p class="analysis">
 A higher number of angioplasted vessels means lower success rate. 87% for 1 vessel, 80% for 2 vessels and 69% for 3.
 </p>
-<div id="htmlwidget-42aeddaaa73e22119a4d" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-42aeddaaa73e22119a4d">{"x":{"visdat":{"19a572624272":["function () ","plotlyVisDat"]},"cur_data":"19a572624272","attrs":{"19a572624272":{"x":{},"marker":{"color":"rgba(255, 0, 0, 0.7)"},"y":{},"name":"Unsuccessful vessels","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"},"19a572624272.1":{"x":{},"marker":{"color":"#AAF683"},"y":{},"name":"Successful vessels","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Count"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Vessels","type":"category","categoryorder":"array","categoryarray":["1 vessel","2 vessels","3 vessels"]},"barmode":"stack","hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["1 vessel","2 vessels","3 vessels"],"marker":{"color":"rgba(255, 0, 0, 0.7)","line":{"color":"rgba(31,119,180,1)"}},"y":[15,28,27],"name":"Unsuccessful vessels","type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["1 vessel","2 vessels","3 vessels"],"marker":{"color":"#AAF683","line":{"color":"rgba(255,127,14,1)"}},"y":[101,117,60],"name":"Successful vessels","type":"bar","error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-cfce38c947e0de519539" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cfce38c947e0de519539">{"x":{"visdat":{"33ca5072e42e":["function () ","plotlyVisDat"]},"cur_data":"33ca5072e42e","attrs":{"33ca5072e42e":{"x":{},"marker":{"color":"rgba(255, 0, 0, 0.7)"},"y":{},"name":"Unsuccessful vessels","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"},"33ca5072e42e.1":{"x":{},"marker":{"color":"#AAF683"},"y":{},"name":"Successful vessels","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Count"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Vessels","type":"category","categoryorder":"array","categoryarray":["1 vessel","2 vessels","3 vessels"]},"barmode":"stack","hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["1 vessel","2 vessels","3 vessels"],"marker":{"color":"rgba(255, 0, 0, 0.7)","line":{"color":"rgba(31,119,180,1)"}},"y":[15,28,27],"name":"Unsuccessful vessels","type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["1 vessel","2 vessels","3 vessels"],"marker":{"color":"#AAF683","line":{"color":"rgba(255,127,14,1)"}},"y":[101,117,60],"name":"Successful vessels","type":"bar","error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <p class="analysis">
-After analyzing the dataset, some conclusions surged by looking and understanding the previous graphs and plots. Clearly, older people are more prone to have lessions and face problems during the surgery. This led to quetioning how can this be reduced?<br> Studies have shown that the use of external pump in risky procedures reduces the potential of facing complications by 25%. As a starting point a deeper analysis is going to be made on whether it is more convenient to the hospital to involve more patients into this type of external aid to prevent future problems and increase the success rate.
+After analyzing the dataset, some conclusions surged by looking and understanding the previous graphs and plots. Clearly, older people are more prone to have lessions and face problems during the surgery. This led to quetioning how can this be reduced?<br> Studies have shown that the use of external pump in risky procedures increases the potential of facing complications by ~25%. As a starting point a deeper analysis is going to be made on whether it is more convenient to the hospital to involve more patients into this type of external aid to prevent future problems and increase the success rate.
+</p>
+<br>
+<p>
 </p>
 </div>
 </div>
 <div id="predictor" class="section level2">
 <h2>Predictor</h2>
 <p class="predictor">
-The analysis of the dataset led to…
+The analysis of the dataset added to the research made about cardiac events led to an increased knowledge of the subject. However, to ensure a more accurate predictor, a corrplot was made to show the most fitting fields to be compared in order for the predictor to work.
 </p>
+<p><img src="./sources\images\correlation.png" /></p>
+<p class= "analysis">
+As seen in the above graph, to have a more accurate prediction of whether a patient will have immediate complications during a cardiac event or not, a predictor model should be built matching the pump time, age and wether he/she is using an external pump. <br> The model gave us the following results about new patients:<br>
+<ul>
+<li>
+Patient age 33, without external pump has a 5% chance of facing an immediate complication
+</li>
+<li>
+Patient age 52, with external pump and pump time of 60 has a 24% chance of facing an immediate complication
+</li>
+<li>
+Patient age 65, with external pump and pump time of 95 has a 46% chance of facing an immediate complication
+</li>
+</ul>
+<br>
+</p>
+<img src="index_files/figure-html/predictorR-1.png" width="672" style="display: block; margin: auto;" />
+<p class="predictor">
+This box plot is created from the logistic regression. With the information gathered in the graphic we are able to determinate which people are considered to be a possible cardiac event case when the test is done. This limit is set in a position where less false positives cases are issued at the same time that the accuracy is not lost. Below we will find the confussion matrix for the predictor. This will allow for a easier view of the accuracy of the model, evaluating the differences between false positives.
+</p>
+<br>
+<p>
+</p>
+<div id="prediction-quality" class="section level3">
+<h3>Prediction Quality</h3>
+<p class="predictor">
+CONFUSION MATRIX
+</p>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Real Value 0
+</th>
+<th style="text-align:right;">
+Real Value 1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Predict Value 0
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Predict Value 1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+</tbody>
+</table>
+<p class="predictor">
+The model was put to test using a different dataset than what was used for training. After it was given a test group, the predictor accurately predicted 77.8% of the patients succesfully. From the 22% that wasn’t predicted correctly, 8% came from false negative while 14% was due to false positives.
+</p>
+</div>
+<div id="auroc-curve" class="section level3">
+<h3>AUROC Curve</h3>
+<p class="predictor">
+The AUROC curve represent the ratios between false positives and false negatives. The curve helps to show the level of accuracy the predictor model has. This trained model shows 72% accuracy in the ratios of finding and classifying cases.
+</p>
+<center>
+<img src="./sources\images\Auroc.png" style="width:80.0%;height:80.0%" />
+</center>
 </body>
 <footer class="foot">
+</div>
 </div>
 <div id="team" class="section level2">
 <h2>Team</h2>

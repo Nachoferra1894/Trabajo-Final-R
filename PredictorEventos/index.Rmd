@@ -435,11 +435,10 @@ hist((mujeres$EDAD ), main="" , xlim=c(0,100), ylab="Amount of women", xlab="Age
 <p class = "analysis"> After curating the dataset, a deep analysis was made in the search for connections between the variables which led to more complete queries.<br>
 The variables considered to be presented by graphs were: `Tiempo de Bomba`, `Complicaciones Inmediatas`, `Complicaciones Tardias`, `vasos Angioplastiados`</p>
 <p class = "analysis">In the following graph the reason for admission is explored. This graph informs us about the most common problems which led to patients being hospitalized. </p>
-![](./sources\images\Table.png)
+
+
 ```{r treem, echo=FALSE, warning=FALSE}
 library(colormap)
-datos <- ((operacionesAngio$`MOTIVO DE INGRESO`))
-values <- sort(table(datos))
 theCats <- (names(values))
 p <- plot_ly(
 
@@ -449,11 +448,26 @@ name = "Reason for admission",
         values = values,
         parents = NA,
 )
-p <- p %>% layout(treemapcolorway=(colormap(colormap=c('#FFFFFF','#FF0000'),nshades = 8)))
+p <- p %>% layout(treemapcolorway=(colormap(colormap=c('#FFFFFF','#FF494A'),nshades = 8)))
 p
-
 ```
 
+```{r table, echo=FALSE,message=FALSE, warning=FALSE,error=FALSE, fig.align='center'}
+  library(kableExtra)
+  datos <- ((operacionesAngio$`MOTIVO DE INGRESO`))
+  values <- sort(table(datos))
+  kable(values) %>%
+     kable_styling(bootstrap_options = "striped", position = "center") %>%
+     row_spec(0,  color = "white") %>%
+     row_spec(1,  color = "black",background = "#ffffff") %>%
+     row_spec(2,  color = "black",background = '#ffe5e5') %>%
+     row_spec(3,  color = "black",background = '#ffcbcb') %>%
+     row_spec(4,  color = "black",background = '#ffb1b2') %>%
+     row_spec(5,  color = "black",background = '#ff9797') %>%
+     row_spec(6,  color = "black",background = '#ff7d7e') %>%
+     row_spec(7,  color = "black",background = '#ff6364') %>%
+     row_spec(8,  color = "black",background = '#ff494a')
+```
 ### Pump times by age
 
 <p class = "analysis"> Patients between 55 and 72 years old are more prone to needing an external pump during procedure. It was decided that analyzing the amount of time a patient had the pump, tied to their age could give more insight to the problems related to this. The paper <a href="https://www.fucsalud.edu.co/sites/default/files/2017-01/COMPLICACIONES%20QUIRU%CC%81RGICAS.pdf">Complicaciones quirurgicas</a> gives a more in depth perspective of why older patients tend to need more time with an artificial source of pumping. Cardiac surgeries with extracorporeal circulation
@@ -611,17 +625,18 @@ boxplot(predsAll ~ train.complicaciones$`COMPLICACIONES INMEDIATAS`, col = c("gr
 <br>
 <p></p>
 ### Prediction Quality
- <p class= "predictor">CONFUSION MATRIX</p>
+ <p class= "predictor">Confusion matrix</p>
  
- ``` {r confussMatr, echo = FALSE, fig.align = 'center' }
+```{r confussionMatrix, echo=FALSE,message=FALSE, warning=FALSE,error=FALSE, fig.align='center'}
  
- tab <- matrix(c(31,8,4,11), ncol=2, byrow=TRUE)
+tab <- matrix(c(31,8,4,11), ncol=2, byrow=TRUE)
 colnames(tab) <- c("Real Value 0", "Real Value 1")
 rownames(tab) <- c("Predict Value 0", "Predict Value 1")
-tab <- as.table(tab)
-tab
- 
- ```
+library(kableExtra)
+kable (as.table(tab)) %>%
+    kable_styling(bootstrap_options = "striped", position = "center")
+
+```
 
  <p class= "predictor">The model was put to test using a different dataset than what was used for training. After it was given a test group, the predictor accurately predicted 77.8% of the patients succesfully. From the 22% that wasn't predicted correctly, 8% came from false negative while 14% was due to false positives. </p>
  
